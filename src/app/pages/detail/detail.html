@@ -1,0 +1,155 @@
+@if (photoResult().error) {
+<div class="error-container">
+  <h2>{{i18n().imageNotFound}}</h2>
+  <p>{{i18n().providedImageId}}.</p>
+  <p>{{i18n().redirectingHome}}...</p>
+</div>
+}
+
+@if (photoResult().loading) {
+<article class="detail-container">
+  <section class="image-section">
+    <app-skeleton />
+  </section>
+  <section class="content-section">
+    <app-skeleton />
+  </section>
+</article>
+}
+
+@if (photoResult().photo; as photo) {
+<article class="detail-container">
+
+  <section class="image-section">
+    <app-lazy-image 
+      [src]="photo.urls.regular"
+      [alt]="
+        photo.alt_description ||
+        photo.description ||
+        'Photo by ' + photo.user.name
+      "
+      aspectRatio="4 / 3" />
+  </section>
+
+  <section class="content-section">
+    <mat-card class="info-card">
+      <mat-card-header>
+        <div class="user-info">
+          <app-lazy-image 
+            imageClass="avatar"
+            [src]="photo.user.profile_image.medium"
+            [alt]="photo.user.name"
+            aspectRatio="1 / 1" />
+          <div class="user-details">
+            <h2 class="photographer-name">{{ photo.user.name }}</h2>
+            <p class="username">@{{ photo.user.username }}</p>
+          </div>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content>
+        @if (photo.description || photo.alt_description) {
+        <div class="description-section">
+          <h3>{{ i18n().description }}</h3>
+          <p class="description">
+            {{ photo.description || photo.alt_description }}
+          </p>
+        </div>
+        }
+
+        <div class="stats-section">
+          <h3>{{ i18n().photoDetails }}</h3>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-label">{{ i18n().likes }}</span>
+              <span class="stat-value">{{ photo.likes | number }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">{{ i18n().dimensions }}</span>
+              <span class="stat-value"
+                >{{ photo.width }} × {{ photo.height }}</span
+              >
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">{{ i18n().created }}</span>
+              <span class="stat-value">{{
+                photo.created_at | date : "mediumDate"
+              }}</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">{{ i18n().updated }}</span>
+              <span class="stat-value">{{
+                photo.updated_at | date : "mediumDate"
+              }}</span>
+            </div>
+          </div>
+        </div>
+
+        @if (photo.user.bio) {
+        <div class="bio-section">
+          <h3>{{ i18n().aboutPhotographer }}</h3>
+          <p class="bio">{{ photo.user.bio }}</p>
+        </div>
+        }
+
+        <div class="user-stats-section">
+          <h3>{{ i18n().photographerStats }}</h3>
+          <div class="user-stats-grid">
+            <div class="user-stat-item">
+              <span class="user-stat-value">{{
+                photo.user.total_photos | number
+              }}</span>
+              <span class="user-stat-label">{{ i18n().photoDetails }}</span>
+            </div>
+            <div class="user-stat-item">
+              <span class="user-stat-value">{{
+                photo.user.total_likes | number
+              }}</span>
+              <span class="user-stat-label">{{ i18n().likes }}</span>
+            </div>
+            <div class="user-stat-item">
+              <span class="user-stat-value">{{
+                photo.user.total_collections | number
+              }}</span>
+              <span class="user-stat-label">{{ i18n().collections }}</span>
+            </div>
+          </div>
+        </div>
+
+        @if (photo.user.location) {
+        <div class="location-section">
+          <h3>{{ i18n().location }}</h3>
+          <p class="location">{{ photo.user.location }}</p>
+        </div>
+        }
+      </mat-card-content>
+
+      <mat-card-actions>
+        <div class="action-buttons">
+          @if (photo.links.download) {
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="downloadImage(photo.links.download!)"
+          >
+            {{ i18n().download }}
+          </button>
+          } @if (photo.links.html) {
+          <button mat-stroked-button (click)="openUnsplash(photo.links.html)">
+            {{ i18n().viewOnUnsplash }}
+          </button>
+          } @if (photo.user.portfolio_url) {
+          <button
+            mat-stroked-button
+            (click)="openPortfolio(photo.user.portfolio_url!)"
+          >
+            {{ i18n().photographerPortfolio }}
+          </button>
+          }
+          <app-favorite-btn [photo]="photo" />
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </section>
+</article>
+}

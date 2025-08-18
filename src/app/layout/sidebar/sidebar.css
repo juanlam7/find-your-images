@@ -1,0 +1,144 @@
+.menu-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 20;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  background-color: var(--mat-sys-inverse-primary);
+  color: var(--mat-sys-on-surface);
+}
+
+@media (min-width: 768px) {
+  .menu-button {
+    display: none;
+  }
+}
+
+.menu-content {
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  overflow-y: scroll;
+  width: 260px;
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  transform: translateX(-100%);
+  background-color: var(--mat-sys-inverse-primary);
+  z-index: 10;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-top h1 {
+  margin: 0;
+  flex: 1;
+}
+
+.language-controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .menu-content {
+    transform: translateX(0);
+  }
+}
+
+.open-sidebar {
+  transform: translateX(0);
+}
+
+.nav-container {
+  width: 100%;
+}
+
+.nav-link {
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  border-bottom: 1px solid rgb(51 65 85);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  transition: background-color 150ms ease-in-out;
+  text-decoration: none;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.nav-link:hover {
+  background-color: var(--mat-sys-inverse-on-surface);
+  cursor: pointer;
+}
+
+.active-link {
+  background-color: darkcyan;
+}
+
+.nav-icon {
+  display: flex;
+  color: var(--mat-sys-on-background);
+  align-items: center;
+}
+
+.nav-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 1.25rem;
+  color: var(--mat-sys-on-background);
+}
+
+.nav-subtitle {
+  font-size: 0.875rem;
+  color: var(--mat-sys-on-background);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .nav-subtitle {
+    display: block;
+  }
+}
+
+.item-key {
+  display: flex;
+  flex-direction: column;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .backdrop {
+    display: none;
+  }
+}

@@ -1,0 +1,33 @@
+<div>
+  <mat-form-field [appearance]="config().appearance || 'outline'">
+    <mat-label>{{ `${i18n().search}...` }}</mat-label>
+    <input
+      matInput
+      type="text"
+      [formControl]="searchControl"
+      [placeholder]="`${i18n().search}...`"
+      autocomplete="off"
+      spellcheck="false"
+    />
+
+    @if (isLoading()) {
+    <mat-icon matSuffix>hourglass_empty</mat-icon>
+    }
+
+    @if (config().showClearButton && searchValue() && !isLoading()) {
+    <button
+      matSuffix
+      mat-icon-button
+      type="button"
+      aria-label="Clear search"
+      (click)="clearSearch()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    }
+
+    @if (!searchValue() && !isLoading()) {
+    <mat-icon matSuffix>search</mat-icon>
+    }
+  </mat-form-field>
+</div>

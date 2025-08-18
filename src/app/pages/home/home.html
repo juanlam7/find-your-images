@@ -1,0 +1,17 @@
+<article
+  appScrollNearEnd
+  [scrollThreshold]="300"
+  (nearEnd)="spinnerService.isLoading() ? '' : loadMore()"
+>
+  <app-search-field
+    (searchChange)="onSearch($event)"
+    (searchClear)="onSearchClear()"
+  />
+  <app-grid
+    [isLoading]="this.imagesServices.isLoadingPhotos()"
+    [emptyPhotosText]="i18n().notSearchResult"
+    [redirectRoute]="'/detail'"
+    [photos]="imagesServices.photos()"
+    [isResultEmpty]="imagesServices.isSearchResultEmpty()"
+  />
+</article>

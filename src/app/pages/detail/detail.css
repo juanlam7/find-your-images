@@ -1,0 +1,210 @@
+.detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.image-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: sticky;
+  height: fit-content;
+  align-self: center;
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.info-card {
+  height: fit-content;
+  background-color: var(--mat-sys-inverse-primary);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.photographer-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.username {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+}
+
+.description-section,
+.stats-section,
+.bio-section,
+.user-stats-section,
+.location-section {
+  margin: 1.5rem 0;
+}
+
+.description-section h3,
+.stats-section h3,
+.bio-section h3,
+.user-stats-section h3,
+.location-section h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.description {
+  line-height: 1.6;
+  margin: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: #333;
+}
+
+.bio {
+  line-height: 1.6;
+  margin: 0;
+}
+
+.user-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.user-stat-item {
+  text-align: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.user-stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.user-stat-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.location {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .detail-container {
+    gap: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .image-section {
+    position: static;
+    order: 1;
+  }
+
+  .content-section {
+    order: 2;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .user-stat-item {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .user-stat-value {
+    font-size: 1.25rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+
+  .photographer-name {
+    font-size: 1.25rem;
+  }
+
+  .user-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

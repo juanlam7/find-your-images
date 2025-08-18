@@ -1,0 +1,65 @@
+@if (isMenuOpen()) {
+<div class="backdrop" (click)="toggleMenu()"></div>
+}
+
+<button mat-icon-button class="menu-button" (click)="toggleMenu()">
+  <mat-icon aria-hidden="false" aria-label="menu theme">menu</mat-icon>
+</button>
+<div class="menu-content hide-scrollbar" [class.open-sidebar]="isMenuOpen()">
+
+  <div class="sidebar-header">
+    <div class="header-top">
+      <h1>{{ i18n().welcome }} 🚀</h1>
+      <app-theme-picker />
+    </div>
+    <div class="language-controls">
+      <button
+        matButton="filled"
+        [disabled]="languageService.getCurrentLanguage() === locales.En"
+        (click)="switchLanguage(locales.En)"
+      >
+        {{ locales.En | uppercase }}
+      </button>
+      <button
+        matButton="filled"
+        [disabled]="languageService.getCurrentLanguage() === locales.Es"
+        (click)="switchLanguage(locales.Es)"
+      >
+        {{ locales.Es | uppercase }}
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-container">
+    @for (item of menuOptions; track item.route) {
+    <a
+      [routerLink]="item.route"
+      routerLinkActive="active-link"
+      class="nav-link"
+      (click)="toggleMenu()"
+    >
+      <div>
+        <mat-icon class="nav-icon" aria-hidden="false" aria-label="icon nav">{{
+          item.icon
+        }}</mat-icon>
+      </div>
+      <div class="item-key">
+        <span class="nav-title">{{ languageService.getTranslation(item.label) }}</span>
+        <span class="nav-subtitle">{{ languageService.getTranslation(item.subLabel) }}</span>
+      </div>
+    </a>
+    }
+    @for (key of imagesServices.searchHistoryKeys(); track key) {
+    <a (click)="searchByKey(key); toggleMenu()" class="nav-link hide-scrollbar">
+      <div>
+        <mat-icon aria-hidden="false" aria-label="icon nav">history</mat-icon>
+      </div>
+      <div class="item-key">
+        <span>
+          {{ key }}
+        </span>
+      </div>
+    </a>
+    }
+  </div>
+</div>

@@ -1,0 +1,29 @@
+export interface IAppLabels {
+  welcome: string;
+  english: string;
+  spanish: string;
+  home: string;
+  favorites: string;
+  randomImages: string;
+  favoriteImages: string;
+  description: string;
+  photoDetails: string;
+  likes: string;
+  dimensions: string;
+  created: string;
+  updated: string;
+  aboutPhotographer: string;
+  photographerStats: string;
+  photos: string;
+  collections: string;
+  location: string;
+  download: string;
+  viewOnUnsplash: string;
+  photographerPortfolio: string;
+  search: string;
+  notFavoriteImage: string;
+  imageNotFound: string;
+  providedImageId: string;
+  redirectingHome: string;
+  notSearchResult: string;
+}

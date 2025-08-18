@@ -1,0 +1,24 @@
+@if (!this.isLoading() && this.isResultEmpty()) {
+<h1>{{ this.emptyPhotosText() }}.</h1>
+}
+
+<div class="grid-container">
+  @for (item of photos() | uniquePhotos; track item.id) {
+  <figure class="grid-item">
+    <app-favorite-btn [photo]="item" />
+    <a [routerLink]="redirectRoute() ? [redirectRoute(), item.id] : null">
+      <app-lazy-image
+        imageClass="grid-image"
+        [src]="item.urls.small" 
+        [alt]="'photo unsplash'" 
+        aspectRatio="3 / 4" />
+    </a>
+  </figure>
+  }
+  
+  @if (this.isLoading() || this.photos().length === 0 && !this.isResultEmpty()) {
+    @for (skeleton of skeletonArray; track $index) {
+      <app-skeleton />
+    }
+  }
+</div>

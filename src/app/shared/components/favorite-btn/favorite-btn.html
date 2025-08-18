@@ -1,0 +1,16 @@
+<button
+  (click)="isFavorite() ? deleteFavoriteBtn() : AddFavoriteBtn()"
+  class="btn-container"
+  mat-icon-button
+  [ngStyle]="{
+        backgroundColor: isFavorite()
+          ? 'rgba(244, 63, 94, 1)'
+          : 'rgba(255, 255, 255, 1)',
+        color: isFavorite() ? 'white' : 'black',
+      }"
+  matTooltip="Toggle favorite"
+>
+  <mat-icon aria-hidden="false" aria-label="icon favorite">{{
+    isFavorite() ? "favorite" : "favorite_border"
+  }}</mat-icon>
+</button>
