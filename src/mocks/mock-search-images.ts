@@ -1,4 +1,4 @@
-import { SearchImagesResult } from '@core/types';
+import { SearchImagesResult } from "@features/images/types";
 
 export const mockSearchImagesResult: SearchImagesResult = {
   total: 72,

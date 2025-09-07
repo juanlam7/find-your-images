@@ -8,8 +8,7 @@
     "baseUrl": "./src/",
     "paths": {
       "@core/*": ["app/core/*"],
-      "@pages/*": ["app/pages/*"],
-      "@layout/*": ["app/layout/*"],
+      "@features/*": ["app/features/*"],
       "@shared/*": ["app/shared/*"],
       "@envs/*": ["environments/*"]
     },
