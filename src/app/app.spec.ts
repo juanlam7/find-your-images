@@ -1,5 +1,5 @@
 import { provideZonelessChangeDetection } from '@angular/core';
-import { ImagesService } from '@core/services/images.service';
+import { ImagesService } from '@features/images/services/images.service';
 import { render, screen } from '@testing-library/angular';
 import { App } from './app';
 import { TranslationService } from './core/services/translation.services';

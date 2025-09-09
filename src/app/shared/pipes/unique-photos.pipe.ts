@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { UnsplashPhoto } from '@core/types';
+import { UnsplashPhoto } from '@features/images/types';
 
 @Pipe({
   name: 'uniquePhotos',

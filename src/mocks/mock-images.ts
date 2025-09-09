@@ -1,4 +1,4 @@
-import { UnsplashPhoto } from '@core/types';
+import { UnsplashPhoto } from "@features/images/types";
 
 export const mockImages: UnsplashPhoto[] = [
   {
